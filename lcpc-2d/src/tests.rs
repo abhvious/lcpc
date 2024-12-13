@@ -49,7 +49,7 @@ where
 
         // minimize nr subject to #cols and rho
         let np = ((nc as f64) * rho).floor() as usize;
-        let nr = (len + np - 1) / np;
+        let nr = len.div_ceil(np);
         assert!(np * nr >= len);
         assert!(np * (nr - 1) < len);
 
@@ -99,7 +99,7 @@ where
     }
 
     fn get_dims(&self, len: usize) -> (usize, usize, usize) {
-        let n_rows = (len + self.n_per_row - 1) / self.n_per_row;
+        let n_rows = len.div_ceil(self.n_per_row);
         (n_rows, self.n_per_row, self.n_cols)
     }
 

@@ -633,7 +633,7 @@ where
 /// for a code with `len`-length codewords over `flog2`-bit field
 pub fn n_degree_tests(lambda: usize, len: usize, flog2: usize) -> usize {
     let den = flog2 - log2(len);
-    (lambda + den - 1) / den
+    lambda.div_ceil(den)
 }
 
 // parallelization limit when working on columns
